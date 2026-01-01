@@ -3,45 +3,24 @@ import Link from "next/link";
 
 const projects = [
   {
-    title: "SmileBright Dental",
-    category: "Healthcare / SEO",
-    description: "A complete website overhaul for a local dental clinic, resulting in a 40% increase in online bookings.",
-    image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=800",
+    title: "Global Artisan Market",
+    category: "E-Commerce / B2B",
+    description: "A borderless digital marketplace connecting world-class artisans with buyers across the UK, USA, and Canada.",
+    image: "/portfolio/artisan-market-v3.png",
     link: "#"
   },
   {
     title: "RapidFlow Plumbing",
     category: "Trades / Lead Gen",
     description: "A high-performance booking platform and service area map that transformed a local plumbing fleet into a digital leader.",
-    image: "/portfolio/plumbing-site.png",
-    link: "#"
-  },
-  {
-    title: "Global Artisan Market",
-    category: "E-Commerce / B2B",
-    description: "A borderless digital marketplace connecting world-class artisans with buyers across the UK, USA, and Canada.",
-    image: "/portfolio/artisan-market.png",
-    link: "#"
-  },
-  {
-    title: "Urban Bistro App",
-    category: "Mobile App (PWA)",
-    description: "Progressive Web App for a trendy cafe allowing QR code ordering and loyalty rewards.",
-    image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800",
-    link: "#"
-  },
-  {
-    title: "TechStart Legal",
-    category: "Corporate",
-    description: "Professional, trust-building website for a law firm specializing in technology startups.",
-    image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&q=80&w=800",
+    image: "/portfolio/plumbing-site-mobile.png",
     link: "#"
   },
   {
     title: "EcoStay Resort",
     category: "Hospitality",
     description: "Booking engine and gallery for an eco-friendly resort, emphasizing visual storytelling.",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800",
+    image: "/portfolio/ecostay-mobile.png",
     link: "#"
   }
 ];
@@ -63,12 +42,12 @@ export default function PortfolioPage() {
         {projects.map((project, index) => (
           <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-lg transition-all group">
             {/* Image Container */}
-            <div className="relative h-64 w-full overflow-hidden">
+            <div className="relative h-96 w-full overflow-hidden bg-gray-50">
                <Image 
                  src={project.image} 
                  alt={`Showcase of ${project.title} - ${project.category}`} 
                  fill
-                 className="object-cover group-hover:scale-110 transition-transform duration-500"
+                 className="object-contain group-hover:scale-105 transition-transform duration-500"
                />
                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors"></div>
             </div>
