@@ -9,15 +9,12 @@ const inter = Inter({ subsets: ["latin"] });
 const siteUrl = "https://aquatech-agency.com"; // Placeholder, update to actual if known
 
 export const metadata: Metadata = {
-  title: {
-    default: "Aqua Tech Agency | Premium Web Development - USA, UK, Canada, Gambia",
-    template: "%s | Aqua Tech Agency"
-  },
-  description: "Advanced web development agency specializing in custom, high-performance websites for dentists, plumbers, and businesses in the USA, UK, Canada, and The Gambia (HQ). 2026-ready SEO and AI-optimized solutions.",
+  title: "ATS Creative Hub — Websites for Local Businesses | Starter $999",
+  description: "We build fast, mobile-first websites for dentists, plumbers and boutiques. Starter sites from $999 — SEO-ready, responsive, and backed by priority support.",
   keywords: ["web development agency", "custom website design", "SEO experts", "USA web dev", "UK web development", "Canada web design", "Gambia tech agency", "Aqua Tech Agency", "Next.js development"],
-  authors: [{ name: "Aqua Tech Agency" }],
-  creator: "Aqua Tech Agency",
-  publisher: "Aqua Tech Agency",
+  authors: [{ name: "ATS Creative Hub" }],
+  creator: "ATS Creative Hub",
+  publisher: "ATS Creative Hub",
   formatDetection: {
     email: false,
     address: false,
@@ -34,16 +31,16 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Aqua Tech Agency | Expert Web Development Worldwide",
-    description: "Custom websites for dentists, plumbers, and small businesses. High-performance, SEO-optimized web development services in USA, UK, Canada, and The Gambia.",
-    url: siteUrl,
-    siteName: "Aqua Tech Agency",
+    title: "ATS Creative Hub — Websites for Local Businesses",
+    description: "Starter websites from $999. Local SEO, booking systems, and priority hosting.",
+    url: "https://aquatech-agency.com",
+    siteName: "ATS Creative Hub",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Aqua Tech Agency Web Development",
+        alt: "ATS Creative Hub - Premium Web Design",
       },
     ],
     locale: "en_US",
@@ -72,62 +69,22 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = [
-  {
-    "@context": "https://schema.org",
-    "@type": "WebDevelopmentBusiness",
-    "name": "Aqua Tech Agency - Gambia (HQ)",
-    "url": siteUrl,
-    "telephone": "+220 2390892",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Kairaba Avenue",
-      "addressLocality": "Banjul",
-      "addressCountry": "GM"
-    }
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "ATS Creative Hub",
+  "telephone": "+2202390892",
+  "email": "aquaTechssolutions@gmail.com",
+  "url": "https://aqua-tech-vert.vercel.app/",
+  "priceRange": "$$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Banjul",
+    "addressCountry": "GM"
   },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebDevelopmentBusiness",
-    "name": "Aqua Tech Agency - Canada",
-    "url": siteUrl,
-    "telephone": "+1-416-555-0123",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Bay Street",
-      "addressLocality": "Toronto",
-      "addressRegion": "ON",
-      "addressCountry": "CA"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebDevelopmentBusiness",
-    "name": "Aqua Tech Agency - USA",
-    "url": siteUrl,
-    "telephone": "+1-888-555-0123",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "123 Tech Lane",
-      "addressLocality": "Metro City",
-      "addressRegion": "ST",
-      "addressCountry": "US"
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebDevelopmentBusiness",
-    "name": "Aqua Tech Agency - UK",
-    "url": siteUrl,
-    "telephone": "+44 20 7946 0000",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Canary Wharf",
-      "addressLocality": "London",
-      "addressCountry": "GB"
-    }
-  }
-];
+  "areaServed": ["US", "UK", "CA", "GM"],
+  "sameAs": []
+};
 
 import FloatingContact from "@/components/FloatingContact";
 import Footer from "@/components/Footer";
@@ -141,17 +98,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {jsonLd.map((schema, index) => (
           <script
-            key={index}
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-        ))}
       </head>
       <body className={`${inter.className} antialiased`} suppressHydrationWarning>
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md z-50">
+          Skip to content
+        </a>
         <Header />
-        {children}
+        <div id="main-content">
+          {children}
+        </div>
         <Footer />
         <FloatingContact />
         <CookieConsent />

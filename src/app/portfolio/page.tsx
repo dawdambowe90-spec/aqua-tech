@@ -17,6 +17,13 @@ const projects = [
     link: "#"
   },
   {
+    title: "SmileBright Dental",
+    category: "Medical / Local Service",
+    description: "A patient-focused dental website with integrated appointment scheduling and insurance verification information.",
+    image: "/portfolio/dental-site-mobile.png",
+    link: "#"
+  },
+  {
     title: "EcoStay Resort",
     category: "Hospitality",
     description: "Booking engine and gallery for an eco-friendly resort, emphasizing visual storytelling.",

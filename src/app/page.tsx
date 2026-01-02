@@ -2,9 +2,28 @@ import Image from "next/image";
 import Link from "next/link";
 import FAQ from "@/components/FAQ";
 
+import { faqs } from "@/data/faqs";
+
 export default function Home() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": (faq as any).answerText || faq.answer
+      }
+    }))
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       {/* Hero Section */}
       <section className="w-full bg-gradient-to-b from-blue-900 to-blue-950 text-white pt-32 pb-24 px-6 md:px-12 lg:px-24">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12">
@@ -18,10 +37,10 @@ export default function Home() {
             </div>
 
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-tight">
-              Expert Web Development for <span className="text-blue-400">Local Businesses</span>
+              We build fast, mobile-first websites that get <span className="text-blue-400">local customers</span> walking through your door.
             </h1>
             <p className="text-xl text-blue-100 max-w-2xl mx-auto md:mx-0">
-              We build high-performance, SEO-optimized websites for dentists, plumbers, and small businesses.
+              Designed for dentists, plumbers, and boutiques. Starter sites from $999 with SEO and 30 days support.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -36,6 +55,13 @@ export default function Home() {
                 className="bg-transparent border-2 border-white/20 hover:bg-white/10 text-white text-lg font-semibold py-4 px-8 rounded-lg transition-all"
               >
                 View Portfolio
+              </Link>
+              {/* Secondary Outcome-based CTA */}
+              <Link 
+                href="/portfolio" 
+                className="flex items-center justify-center text-blue-200 hover:text-white font-semibold px-4 transition-colors group"
+              >
+                See real results <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
               </Link>
             </div>
 
@@ -81,12 +107,11 @@ export default function Home() {
       <section className="w-full bg-white py-12 border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 text-center">
            <p className="text-gray-500 text-sm font-semibold uppercase tracking-wider mb-8">Trusted by businesses globally</p>
-           <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-              {/* Placeholders for client logos */}
-              <div className="h-8 w-32 bg-gray-200 rounded"></div>
-              <div className="h-8 w-32 bg-gray-200 rounded"></div>
-              <div className="h-8 w-32 bg-gray-200 rounded"></div>
-              <div className="h-8 w-32 bg-gray-200 rounded"></div>
+           <div className="flex flex-wrap justify-center items-center gap-12 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
+              <span className="text-xl font-bold font-serif text-gray-700">Urban Retail</span>
+              <span className="text-xl font-bold font-sans text-gray-800 tracking-tight">RapidFlow</span>
+              <span className="text-xl font-bold font-mono text-gray-600">Dentalistcare</span>
+              <span className="text-xl font-bold font-serif italic text-gray-700">EcoStay</span>
            </div>
         </div>
       </section>
@@ -179,7 +204,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-6 italic">"Our boutique needed more than a site—we needed a system. ATS integrated our inventory and booking perfectly. We've seen a 40% increase in online inquiries since launch."</p>
                 <div className="flex items-center gap-4">
                    <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden relative">
-                      <Image src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200" alt="Client" fill className="object-cover" />
+                      <Image src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=200" alt="Client Mike Ross" fill className="object-cover" />
                    </div>
                    <div>
                       <h4 className="font-bold text-gray-900">Mike Ross</h4>
@@ -212,7 +237,7 @@ export default function Home() {
                 <p className="text-gray-600 mb-6 italic">"I was skeptical about working with an agency abroad, but their communication is better than locals! Professional, fast, and affordable."</p>
                 <div className="flex items-center gap-4">
                    <div className="w-12 h-12 bg-gray-200 rounded-full overflow-hidden relative">
-                      <Image src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200" alt="Client" fill className="object-cover" />
+                      <Image src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=200" alt="Client David Chen" fill className="object-cover" />
                    </div>
                    <div>
                       <h4 className="font-bold text-gray-900">David Chen</h4>
